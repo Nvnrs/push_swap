@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 08:44:57 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 11:32:34 by nveneros         ###   ########.fr       */
+/*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
+/*   Updated: 2025/01/29 11:42:17 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+t_bool	stack_is_sort(t_stack *stack)
 {
-	t_tab_int	*tab_int;
-	t_stacks	*stacks;
+	int i;
+	int curr;
+	int next;
 
-	if (argc == 1)
-		return (EXIT_FAILURE);
-	tab_int = parse_data(argc, argv);
-	if (tab_int == NULL)
-		return (EXIT_FAILURE);
-	stacks = init_stacks(tab_int);
-	if (stacks == NULL)
-		return (free_tab_int(tab_int), EXIT_FAILURE);
-	sort(stacks);
-	free_tab_int(tab_int);
-	free_stacks(stacks);
-	return (EXIT_SUCCESS);
+	i = stack->top;
+	while (i > 0)
+	{
+		curr = stack->arr[i];
+		next = stack->arr[i - 1];
+		if (curr > next)
+			return (FALSE);
+		i --;
+	}
+	return (TRUE);
+}
+
+void	sort(t_stacks *stacks)
+{
+	if (stack_is_sort(stacks->a))
+		return ;
 }

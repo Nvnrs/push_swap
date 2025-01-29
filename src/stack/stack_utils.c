@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 08:44:57 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 11:32:34 by nveneros         ###   ########.fr       */
+/*   Created: 2025/01/29 11:30:18 by nveneros          #+#    #+#             */
+/*   Updated: 2025/01/29 11:30:39 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	print_stack(t_stack *stack)
 {
-	t_tab_int	*tab_int;
-	t_stacks	*stacks;
+	int	i;
 
-	if (argc == 1)
-		return (EXIT_FAILURE);
-	tab_int = parse_data(argc, argv);
-	if (tab_int == NULL)
-		return (EXIT_FAILURE);
-	stacks = init_stacks(tab_int);
-	if (stacks == NULL)
-		return (free_tab_int(tab_int), EXIT_FAILURE);
-	sort(stacks);
-	free_tab_int(tab_int);
-	free_stacks(stacks);
-	return (EXIT_SUCCESS);
+	i = stack->top;
+	ft_printf("stack : ");
+	if (stack_empty(stack))
+	{
+		ft_printf("empty");
+		return ;
+	}
+	while (i >= 0)
+	{
+		if (i == 0)
+			ft_printf("%d\n", stack->arr[i]);
+		else
+			ft_printf("%d, ", stack->arr[i]);
+		i--;
+	}
 }

@@ -1,5 +1,13 @@
 SRC_DIR = ./src
 SRC= $(SRC_DIR)/main.c \
+	$(SRC_DIR)/parsing/checks.c \
+	$(SRC_DIR)/parsing/parse.c \
+	$(SRC_DIR)/parsing/tab_strs_to_int.c \
+	$(SRC_DIR)/stack/stack_init.c \
+	$(SRC_DIR)/stack/stacks_init.c \
+	$(SRC_DIR)/stack/stack_functions.c \
+	$(SRC_DIR)/stack/stack_utils.c \
+	$(SRC_DIR)/sort/sort.c \
 
 
 OBJ = $(SRC:.c=.o)
@@ -12,11 +20,13 @@ MYLIB42 = $(MYLIB42_DIR)/mylib42.a
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) $(MYLIB42)
-	gcc $(CFLAGS) $(MYLIB42) $(OBJ) -o $(NAME)
+$(NAME) :  $(MYLIB42) $(OBJ)
+	gcc $(CFLAGS) $(OBJ) $(MYLIB42) -o $(NAME)
 
-$(MYLIB42) :
+$(MYLIB42_DIR) :
 	git clone https://github.com/Nvnrs/MYLIB42.git $(MYLIB42_DIR)
+
+$(MYLIB42) : $(MYLIB42_DIR)
 	$(MAKE) -C $(MYLIB42_DIR)
 
 clean :
@@ -25,7 +35,7 @@ clean :
 
 fclean : clean
 	rm -rf $(NAME)
-	rm -rf $(MYLIB42_DIR)
+	rm -rf $(LIB_DIR)
 
 re : fclean all
 

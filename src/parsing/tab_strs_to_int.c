@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   tab_strs_to_int.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 08:44:57 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 11:32:34 by nveneros         ###   ########.fr       */
+/*   Created: 2025/01/29 09:41:30 by nveneros          #+#    #+#             */
+/*   Updated: 2025/01/29 09:50:35 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	free_tab_int(t_tab_int *tab_int)
 {
-	t_tab_int	*tab_int;
-	t_stacks	*stacks;
+	free(tab_int->arr);
+	free(tab_int);
+}
 
-	if (argc == 1)
-		return (EXIT_FAILURE);
-	tab_int = parse_data(argc, argv);
+t_tab_int	*conv_tab_strs_to_int(int nb_str, char **tab_str)
+{
+	int			i;
+	t_tab_int	*tab_int;
+
+	i = 0;
+	tab_int = malloc(sizeof(t_tab_int));
+	tab_int->arr = malloc(nb_str * sizeof(int));
+	if (tab_int->arr == NULL)
+		return (NULL);
+	tab_int->max = nb_str;
 	if (tab_int == NULL)
-		return (EXIT_FAILURE);
-	stacks = init_stacks(tab_int);
-	if (stacks == NULL)
-		return (free_tab_int(tab_int), EXIT_FAILURE);
-	sort(stacks);
-	free_tab_int(tab_int);
-	free_stacks(stacks);
-	return (EXIT_SUCCESS);
+		return (NULL);
+	while (tab_str[i])
+	{
+		tab_int->arr[i] = ft_atoi(tab_str[i]);
+		i++;
+	}
+	return (tab_int);
 }

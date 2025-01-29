@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 08:44:57 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 11:32:34 by nveneros         ###   ########.fr       */
+/*   Created: 2025/01/29 09:25:44 by nveneros          #+#    #+#             */
+/*   Updated: 2025/01/29 11:05:09 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	free_stack(t_stack *stack)
 {
-	t_tab_int	*tab_int;
-	t_stacks	*stacks;
+	free(stack->arr);
+	free(stack);
+}
 
-	if (argc == 1)
-		return (EXIT_FAILURE);
-	tab_int = parse_data(argc, argv);
-	if (tab_int == NULL)
-		return (EXIT_FAILURE);
-	stacks = init_stacks(tab_int);
-	if (stacks == NULL)
-		return (free_tab_int(tab_int), EXIT_FAILURE);
-	sort(stacks);
-	free_tab_int(tab_int);
-	free_stacks(stacks);
-	return (EXIT_SUCCESS);
+t_stack *init_stack(char nb_element)
+{
+	t_stack *stack;
+
+	stack = malloc(sizeof(t_stack));
+	if (stack == NULL)
+		return NULL;
+	stack->arr = malloc(nb_element * sizeof(char));
+	if (stack->arr == NULL)
+		return NULL;
+	stack->top = -1;
+	stack->max = nb_element;
+	return stack;
 }
