@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:30:18 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 11:30:39 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:19:12 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void	print_stack(t_stack *stack)
 	int	i;
 
 	i = stack->top;
-	ft_printf("stack : ");
 	if (stack_empty(stack))
 	{
-		ft_printf("empty");
+		ft_printf("empty\n");
 		return ;
 	}
 	while (i >= 0)
@@ -31,4 +30,21 @@ void	print_stack(t_stack *stack)
 			ft_printf("%d, ", stack->arr[i]);
 		i--;
 	}
+}
+
+int	stack_len(t_stack *stack)
+{
+	int i;
+	int len;
+
+	i = stack->top;
+	len = 0;
+	if (stack_empty(stack))
+		return (len);
+	while (i >= 0)
+	{
+		len++;
+		i--;
+	}
+	return (len);
 }

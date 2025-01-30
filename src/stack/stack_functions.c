@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:23:55 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 11:31:41 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/01/30 09:42:07 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_bool	stack_is_full(t_stack *stack)
 	return (FALSE);
 }
 
-void	push(t_stack *stack, int nb)
+void	stack_push(t_stack *stack, int nb)
 {
 	if (stack_is_full(stack))
 	{

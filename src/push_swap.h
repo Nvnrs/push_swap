@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 08:45:07 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 11:37:24 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:36:00 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,22 @@
 #define MAX_INT_LENGTH 10
 #define MIN_INT_STR "2147483648"
 #define MAX_INT_STR "2147483647"
+
+#define SA "sa\n"
+#define SB "sb\n"
+#define SS "sb\n"
+
+#define PA "pa\n"
+#define PB "pb\n"
+
+#define RA "ra\n"
+#define RB "rb\n"
+#define RR "rr\n"
+
+#define RRA "rra\n"
+#define RRB "rrb\n"
+#define RRR "rrr\n"
+
 
 typedef struct	s_stack
 {
@@ -39,17 +55,34 @@ typedef struct	s_tab_int
 	int	max;
 }	t_tab_int;
 
+/* OPERATIONS */
+void	swap(t_stack *stack, char *message);
+void	swap_stacks(t_stacks *stacks);
+void	push(t_stack *stack_src, t_stack *stack_dst, char *operation);
+void	rotate(t_stack *stack, char *message);
+void	rotate_stacks(t_stacks *stacks);
+void	reverse_rotate(t_stack *stack, char *message);
+void	reverse_rotate_stacks(t_stacks *stacks);
+
+/*TEST OPERATIONS */
+void	test_swap_stacks(t_stacks *stacks);
+void	test_swap(t_stack *stack, char *message);
+void	test_push(t_stack *stack_src, t_stack *stack_dst, char *operation);
+
 /* STACK */
 
 int			pop(t_stack *stack);
 t_bool		stack_empty(t_stack *stack);
 int			top(t_stack *stack);
-void		push(t_stack *stack, int nb);
+void		stack_push(t_stack *stack, int nb);
 t_bool		stack_is_full(t_stack *stack);
 void		free_stack(t_stack *stack);
 t_stack 	*init_stack(char nb_element);
 t_stacks	*init_stacks(t_tab_int *tab_int);
 void		free_stacks(t_stacks *stacks);
+int			stack_len(t_stack *stack);
+void		print_stack(t_stack *stack);
+void		stack_push(t_stack *stack, int nb);
 
 /* PARSING */
 t_tab_int	*parse_data(int argc, char **argv);

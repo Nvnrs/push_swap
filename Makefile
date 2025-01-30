@@ -8,6 +8,10 @@ SRC= $(SRC_DIR)/main.c \
 	$(SRC_DIR)/stack/stack_functions.c \
 	$(SRC_DIR)/stack/stack_utils.c \
 	$(SRC_DIR)/sort/sort.c \
+	$(SRC_DIR)/operations/swap.c \
+	$(SRC_DIR)/operations/push.c \
+	$(SRC_DIR)/operations/rotate.c \
+	$(SRC_DIR)/operations/reverse_rotate.c \
 
 
 OBJ = $(SRC:.c=.o)

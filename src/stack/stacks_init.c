@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 10:50:37 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 11:08:22 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/01/30 09:42:31 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	fill_stack(t_stack *stack_a, int *tab_int)
 	i = stack_a->max -1;
 	while (i >= 0)
 	{
-		push(stack_a, tab_int[i]);
+		stack_push(stack_a, tab_int[i]);
 		i--;
 	}
 }
