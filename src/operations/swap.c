@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:37:29 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/30 11:38:00 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/01 17:57:53 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 // Ne fait rien s’il n’y en a qu’un ou aucun.
 // ss : sa et sb en même temps.
 
-void	test_swap(t_stack *stack, char *message)
+void	test_swap(t_stack *stack, int operation)
 {
 	ft_printf("BFR | ");
 	ft_printf("TOP :%d\n", top(stack));
-	swap(stack, message);
+	swap(stack, operation);
 	ft_printf("AFT | ");
 	ft_printf("TOP :%d\n", top(stack));
 }
@@ -39,12 +39,12 @@ void	test_swap_stacks(t_stacks *stacks)
 	ft_printf("AFT B | ");
 	ft_printf("TOP :%d\n", top(stacks->b));
 }
-void swap(t_stack *stack, char *message)
+void swap(t_stack *stack, int operation)
 {
 	int	temp_top;
 
-	if (message != NULL)
-		ft_printf("%s", message);
+	if (operation != SS)
+		message_operation(operation);
 	if (stack_len(stack) < 2)
 	{
 		ft_printf("stack < 2");
@@ -57,7 +57,7 @@ void swap(t_stack *stack, char *message)
 
 void	swap_stacks(t_stacks *stacks)
 {
-	swap(stacks->a, NULL);
-	swap(stacks->b, NULL);
-	ft_printf("%s", SS);
+	swap(stacks->a, SS);
+	swap(stacks->b, SS);
+	message_operation(SS);
 }

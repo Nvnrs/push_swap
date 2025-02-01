@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 08:45:07 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/30 11:36:00 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/01 17:54:58 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,35 @@
 #define MIN_INT_STR "2147483648"
 #define MAX_INT_STR "2147483647"
 
-#define SA "sa\n"
-#define SB "sb\n"
-#define SS "sb\n"
+// #define SA "sa\n"
+// #define SB "sb\n"
+// #define SS "sb\n"
 
-#define PA "pa\n"
-#define PB "pb\n"
+// #define PA "pa\n"
+// #define PB "pb\n"
 
-#define RA "ra\n"
-#define RB "rb\n"
-#define RR "rr\n"
+// #define RA "ra\n"
+// #define RB "rb\n"
+// #define RR "rr\n"
 
-#define RRA "rra\n"
-#define RRB "rrb\n"
-#define RRR "rrr\n"
+// #define RRA "rra\n"
+// #define RRB "rrb\n"
+// #define RRR "rrr\n"
+#define PA 71
+#define PB 72
+
+#define SS 80
+#define SA 81
+#define SB 82
+
+
+#define RR 90
+#define RA 91
+#define RB 92
+
+#define RRR 100
+#define RRA 101
+#define RRB 102
 
 
 typedef struct	s_stack
@@ -55,19 +70,28 @@ typedef struct	s_tab_int
 	int	max;
 }	t_tab_int;
 
+typedef struct	s_costs
+{
+	int	element;
+	t_tab_int	*cost_a;
+	t_tab_int	*cost_b;
+	t_tab_int	*cost_t;
+}	t_costs;
+
 /* OPERATIONS */
-void	swap(t_stack *stack, char *message);
+void	swap(t_stack *stack, int operation);
 void	swap_stacks(t_stacks *stacks);
-void	push(t_stack *stack_src, t_stack *stack_dst, char *operation);
-void	rotate(t_stack *stack, char *message);
+void	push(t_stack *stack_src, t_stack *stack_dst, int operation);
+void	rotate(t_stack *stack, int	operation);
 void	rotate_stacks(t_stacks *stacks);
-void	reverse_rotate(t_stack *stack, char *message);
+void	reverse_rotate(t_stack *stack, int operation);
 void	reverse_rotate_stacks(t_stacks *stacks);
+void	message_operation(int operation);
 
 /*TEST OPERATIONS */
 void	test_swap_stacks(t_stacks *stacks);
-void	test_swap(t_stack *stack, char *message);
-void	test_push(t_stack *stack_src, t_stack *stack_dst, char *operation);
+void	test_swap(t_stack *stack, int operation);
+void	test_push(t_stack *stack_src, t_stack *stack_dst, int operation);
 
 /* STACK */
 

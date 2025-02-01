@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:50:24 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/30 11:38:14 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/01 17:52:53 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 // 3. rrr
 //   * Applique rra et rrb simultanément.
 
-void	reverse_rotate(t_stack *stack, char *message)
+void	reverse_rotate(t_stack *stack, int operation)
 {
 	int i;
 	int temp;
 
 	i = 0;
-	if (message)
-		ft_printf("%s", message);
+	if (operation != RRR)
+		message_operation(operation);
 	while (i < stack->top)
 	{
 		temp = stack->arr[i];
@@ -38,9 +38,9 @@ void	reverse_rotate(t_stack *stack, char *message)
 	}	
 }
 
-void reverse_rotate_stacks(t_stacks *stacks)
+void	reverse_rotate_stacks(t_stacks *stacks)
 {
-	reverse_rotate(stacks->a, NULL);
-	reverse_rotate(stacks->b, NULL);
-	ft_printf("%s", RRR);
+	reverse_rotate(stacks->a, RRR);
+	reverse_rotate(stacks->b, RRR);
+	message_operation(RRR);
 }
