@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 08:45:07 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/01 17:54:58 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:38:58 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@
 
 #define RRR 100
 #define RRA 101
-#define RRB 102
+#define RRB 102 
 
 
 typedef struct	s_stack
 {
-	char	*arr;
+	int		*arr;
 	int		max;
 	int		top;
 }	t_stack;
@@ -70,12 +70,20 @@ typedef struct	s_tab_int
 	int	max;
 }	t_tab_int;
 
+typedef struct	s_dynamic_tab
+{
+	int	*arr;
+	int	current_size;
+	int	max;
+}	t_dynamic_tab;
+
+
 typedef struct	s_costs
 {
 	int	element;
-	t_tab_int	*cost_a;
-	t_tab_int	*cost_b;
-	t_tab_int	*cost_t;
+	t_dynamic_tab	*a;
+	t_dynamic_tab	*b;
+	t_dynamic_tab	*total;
 }	t_costs;
 
 /* OPERATIONS */
@@ -87,6 +95,7 @@ void	rotate_stacks(t_stacks *stacks);
 void	reverse_rotate(t_stack *stack, int operation);
 void	reverse_rotate_stacks(t_stacks *stacks);
 void	message_operation(int operation);
+void	select_operation(t_stacks *stacks, int operation);
 
 /*TEST OPERATIONS */
 void	test_swap_stacks(t_stacks *stacks);
@@ -117,5 +126,15 @@ t_tab_int	*conv_tab_strs_to_int(int nb_str, char **tab_str);
 void		free_tab_int(t_tab_int *tab_int);
 
 /* SORT */
-void	sort(t_stacks *stacks);
+void			sort(t_stacks *stacks);
+
+/* COSTS */
+void			get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element);
+void			get_costs_a(t_dynamic_tab *cost_a, t_stack *stack, int i_el);
+void			free_costs(t_costs *costs);
+void			free_dynamic_tab(t_dynamic_tab *tab);
+t_dynamic_tab	*init_dynamic_tab(int max);
+t_costs			*init_costs(int element, int max_size);
+void			get_total_costs(t_costs *costs);
+
 #endif
