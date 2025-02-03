@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 08:45:07 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 13:46:01 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:22:11 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct	s_dynamic_tab
 
 typedef struct	s_costs
 {
-	int	element;
+	int				element;
 	t_dynamic_tab	*a;
 	t_dynamic_tab	*b;
 	t_dynamic_tab	*total;

@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 15:18:23 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:53:44 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,41 @@ void	start_push(t_stacks *stacks)
 	}
 }
 
+int	get_index_max_in_stack(t_stack *stack)
+{
+	int max;
+	int next;
+
+	max = stack->top;
+	next = stack->top -1;
+	while (next > 0)
+	{
+		if (stack->arr[next] > stack->arr[max])
+			max = next;
+		next--;
+	}
+	// ft_printf("MAX VAL IN STACK %d\n", stack->arr[max]);
+	// print_stack(stack);
+	// ft_printf("\n");
+	return (max);
+}
+
+void	put_max_to_top_b(t_stacks *stacks)
+{
+	int operation;
+	int i_val_max;
+	int middle_stack;
+
+	i_val_max = get_index_max_in_stack(stacks->b);
+	middle_stack = stacks->b->top / 2;
+	if (i_val_max >= middle_stack)
+		operation = RB;
+	else
+		operation = RRB;
+	while (!top_is_max(stacks->b))
+		select_operation(stacks, operation);
+}
+
 void	turk_sort(t_stacks *stacks)
 {
 	t_costs	*selected_el;
@@ -138,10 +173,11 @@ void	turk_sort(t_stacks *stacks)
 		run_operations(stacks, selected_el);
 		// run_operations_without_opti(stacks, selected_el->a);
 		// run_operations_without_opti(stacks, selected_el->b);
-		while(!top_is_max(stacks->b))
-		{
-			rotate(stacks->b, RB);
-		}
+		// get_index_max_in_stack(stacks->b);
+		// while(!top_is_max(stacks->b))
+		// {
+		// 	rotate(stacks->b, RB);
+		// }
 		// ft_printf("nb instru %d\n", selected_el->total->current_size);
 		// print_instructions(selected_el->total);
 		free_costs(selected_el);

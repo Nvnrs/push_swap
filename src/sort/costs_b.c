@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 11:40:49 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 15:19:56 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:50:31 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_bool	last_is_min(t_stack *stack)
 // 	}
 	
 // }
+
 void	get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element)
 {
 	int 	moves_top;
@@ -115,7 +116,7 @@ void	get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element)
 	// minimal_moves_bot = 2;
 	moves_top = count_move_start_top(cost_b, stack, element);
 	moves_bot = count_move_start_bot(cost_b, stack, element);
-
+	
 	if (top_is_max(stack) && element > top(stack))
 	{
 		// ft_printf("top is max");
@@ -134,6 +135,7 @@ void	get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element)
 			int i;
 
 			i = 0;
+			// ft_printf("top is better\n");
 			while (i < moves_top)
 			{
 				cost_b->arr[cost_b->current_size++] = RB;		
@@ -147,6 +149,7 @@ void	get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element)
 			int i;
 
 			i = 0;
+			// ft_printf("bot is better\n");	
 			while (i < moves_bot)
 			{
 				cost_b->arr[cost_b->current_size++] = RRB;		
