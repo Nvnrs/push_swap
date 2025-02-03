@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/02 18:02:07 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:06:49 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_costs	*find_low_cost_element(t_stacks *stacks)
 		get_costs_a(element->a, stacks->a, i);
 		get_costs_b(element->b, stacks->b, element->element);
 		get_total_costs(element);
+		ft_printf("OPERATION %d \n", element->total->current_size);
 		if (best == NULL)
 		{
 			ft_printf("START BEST %d \n", element->total->current_size);
@@ -98,7 +99,7 @@ t_costs	*find_low_cost_element(t_stacks *stacks)
 
 // void	bubble_sort_inversed(t_stacks)
 // {
-	
+
 // }
 
 void	print_instructions(t_dynamic_tab *cost_n)
@@ -120,21 +121,27 @@ void	turk_sort(t_stacks *stacks)
 	ft_printf("turk sort\n");
 	push(stacks->a, stacks->b, PB);
 	push(stacks->a, stacks->b, PB);
+	int i = 1;
 	while (stack_len(stacks->a) > 3)
 	{
 		selected_el = find_low_cost_element(stacks);
 		run_operations(stacks, selected_el);
+		while(!top_is_max(stacks->b))
+		{
+			rotate(stacks->b, RB);
+		}
+	
 		// ft_printf("nb instru %d\n", selected_el->total->current_size);
 		// print_instructions(selected_el->total);
 		// run_operations_without_opti(stacks, selected_el->a);
 		// run_operations_without_opti(stacks, selected_el->b);
 		free_costs(selected_el);
-	}
+	}	
 
-	
 	// reverse_rotate(stacks->b, RB);
 	// if (!stack_is_sorted(stacks->b))
 	print_stack(stacks->a);
+	ft_printf("\n");
 	print_stack(stacks->b);
 	// handle if 3
 }

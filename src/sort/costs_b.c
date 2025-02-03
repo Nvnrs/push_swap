@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 11:40:49 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/02 18:40:30 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:47:04 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,61 +80,88 @@ t_bool	last_is_min(t_stack *stack)
 	return (TRUE);
 }
 
+// void	test_operations_b(t_dynamic_tab *cost_b, t_stacks *stacks)
+// {
+// 	int 	i;
+// 	int 	operation;
+// 	t_stack *copy_b;
+// 	t_stack *copy_a;
+
+// 	i = 0;
+// 	copy_a = stack_copy(stacks->a)
+// 	copy_b = stack_copy(stacks->b)
+// 	while (i < cost_b->current_size)
+// 	{
+// 		operation = cost_b->arr[i];
+// 		if (operation == RB)
+// 			rotate(copy_b, 0);
+// 		else if (operation == RRB)
+// 			reverse_rotate(copy_b, 0);
+// 		else if (operation == PB)
+// 			push()
+// 		i++;
+// 	}
+	
+// }
 void	get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element)
 {
-	int moves_top;
-	int moves_bot;
-	int minimal_moves_bot;
-	int minimal_moves_top;
+	int 	moves_top;
+	int 	moves_bot;
+	int 	minimal_moves_bot;
+	int 	minimal_moves_top;
 
 	// ft_printf("ELEMENT %d\n", element);
-	minimal_moves_top = 1;
-	minimal_moves_bot = 2;
+	// minimal_moves_top = 1;
+	// minimal_moves_bot = 2;
 	moves_top = count_move_start_top(cost_b, stack, element);
 	moves_bot = count_move_start_bot(cost_b, stack, element);
 
-	if (element > top(stack) && top_is_max(stack))
+	if (top_is_max(stack) && element > top(stack))
 	{
-		// ft_printf("TOP IS MAX\n");
-		// ft_printf("el :%d < top %d\n", element, top(stack));
+		ft_printf("top is max");
 		cost_b->arr[cost_b->current_size++] = PB;
-		return;
 	}
-	else if (element < stack->arr[0] && last_is_min(stack))
+	else if (last_is_min(stack) && element < stack->arr[0])
 	{
-		ft_printf("BOT IS MIN");
+		ft_printf("last is min");
 		cost_b->arr[cost_b->current_size++] = PB;
 		cost_b->arr[cost_b->current_size++] = RB;
-		return ;
-	}
-
-
-	// MID CASES
-	if ((moves_top + minimal_moves_top) <= (moves_bot + minimal_moves_bot))
-	{
-		int i;
-	
-		i = 0;
-		ft_printf("top is better %d\n", moves_top);
-		while (i < moves_top)
-		{
-			cost_b->arr[cost_b->current_size++] = RB;
-			i++;
-		}
-		cost_b->arr[cost_b->current_size++] = PB;
 	}
 	else
-	{		
-		int i;
-	
-		ft_printf("bot is better\n");
-		i = 0;
-		while (i < moves_bot)
+	{
+		if (moves_top <= moves_bot)
 		{
-			cost_b->arr[cost_b->current_size++] = RRB;
-			i++;
+			int i;
+
+			i = 0;
+			while (i < moves_top)
+			{
+				cost_b->arr[cost_b->current_size++] = RB;		
+				i++;
+			}
+			cost_b->arr[cost_b->current_size++] = PB;
+			cost_b->arr[cost_b->current_size++] = RB;	
 		}
-		cost_b->arr[cost_b->current_size++] = PB;
-		cost_b->arr[cost_b->current_size++] = RB;
+		else
+		{
+			int i;
+
+			i = 0;
+			while (i < moves_bot)
+			{
+				cost_b->arr[cost_b->current_size++] = RRB;		
+				i++;
+			}
+			cost_b->arr[cost_b->current_size++] = PB;
+			cost_b->arr[cost_b->current_size++] = RB;		
+		}
+
+		// int i;
+
+		// i = 0;
+		// test_operation_b(copy_b,cost_b)
+		// while (!top_is_max(copy_b))
+		// 	cost_b->arr[cost_b->current_size++] = PB;	
+		
 	}
 }

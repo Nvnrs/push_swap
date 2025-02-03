@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 08:45:07 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/02 14:38:58 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:18:27 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void		free_stacks(t_stacks *stacks);
 int			stack_len(t_stack *stack);
 void		print_stack(t_stack *stack);
 void		stack_push(t_stack *stack, int nb);
+t_stack		*stack_copy(t_stack *stack);
 
 /* PARSING */
 t_tab_int	*parse_data(int argc, char **argv);
@@ -136,5 +137,6 @@ void			free_dynamic_tab(t_dynamic_tab *tab);
 t_dynamic_tab	*init_dynamic_tab(int max);
 t_costs			*init_costs(int element, int max_size);
 void			get_total_costs(t_costs *costs);
+t_bool			top_is_max(t_stack *stack);
 
 #endif
