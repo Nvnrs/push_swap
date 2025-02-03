@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 08:45:07 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 11:18:27 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:46:01 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int			top(t_stack *stack);
 void		stack_push(t_stack *stack, int nb);
 t_bool		stack_is_full(t_stack *stack);
 void		free_stack(t_stack *stack);
-t_stack 	*init_stack(char nb_element);
+t_stack 	*init_stack(int nb_element);
 t_stacks	*init_stacks(t_tab_int *tab_int);
 void		free_stacks(t_stacks *stacks);
 int			stack_len(t_stack *stack);

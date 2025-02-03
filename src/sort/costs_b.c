@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 11:40:49 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 11:47:04 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:19:56 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int	count_move_start_top(t_dynamic_tab *cost_b, t_stack *stack, int element)
 
 	count = 0;
 	start = stack->top;
-	ft_printf("start TOP\n");
+	// ft_printf("start TOP\n");
 	while (start >= 0 && element < stack->arr[start])
 	{
-		ft_printf("%d < %d\n", element, stack->arr[start]);
+		// ft_printf("%d < %d\n", element, stack->arr[start]);
 		count++;
 		start--;
 	}
@@ -118,12 +118,12 @@ void	get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element)
 
 	if (top_is_max(stack) && element > top(stack))
 	{
-		ft_printf("top is max");
+		// ft_printf("top is max");
 		cost_b->arr[cost_b->current_size++] = PB;
 	}
 	else if (last_is_min(stack) && element < stack->arr[0])
 	{
-		ft_printf("last is min");
+		// ft_printf("last is min");
 		cost_b->arr[cost_b->current_size++] = PB;
 		cost_b->arr[cost_b->current_size++] = RB;
 	}

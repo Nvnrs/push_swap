@@ -29,7 +29,7 @@ MYLIB42 = $(MYLIB42_DIR)/mylib42.a
 all : $(NAME)
 
 $(NAME) :  $(MYLIB42) $(OBJ)
-	gcc $(CFLAGS) $(OBJ) $(MYLIB42) -o $(NAME)
+	gcc -g $(CFLAGS) $(OBJ) $(MYLIB42) -o $(NAME)
 
 $(MYLIB42_DIR) :
 	git clone https://github.com/Nvnrs/MYLIB42.git $(MYLIB42_DIR)
