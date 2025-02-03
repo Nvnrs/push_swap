@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 14:38:12 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 15:25:52 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:36:55 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	get_total_costs(t_costs *costs)
 	int ope_b;
 
 	a = 0;
-	b =0;
+	b = 0;
 	// copy A and combine
 	// ft_printf("A : %d\n", costs->a->current_size);
 	// print_dynamic_tab(costs->a);

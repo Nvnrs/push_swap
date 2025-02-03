@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 16:53:44 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:36:57 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_costs	*find_low_cost_element(t_stacks *stacks)
  		element = init_costs(stacks->a->arr[i], stacks->a->max);
 		// ft_printf("START FOR EL ________%d\n", element->element);
 		get_costs_a(element->a, stacks->a, i);
-		get_costs_b(element->b, stacks->b, element->element);
+		get_costs_b(element->b, stacks->b, element->element, i);
 		get_total_costs(element);
 		// ft_printf("OPERATION %d \n", element->total->current_size);
 		if (best == NULL)
@@ -181,7 +181,8 @@ void	turk_sort(t_stacks *stacks)
 		// ft_printf("nb instru %d\n", selected_el->total->current_size);
 		// print_instructions(selected_el->total);
 		free_costs(selected_el);
-	}	
+	}
+	put_max_to_top_b(stacks);
 
 	// reverse_rotate(stacks->b, RB);
 	// if (!stack_is_sorted(stacks->b))

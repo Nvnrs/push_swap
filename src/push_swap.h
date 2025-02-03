@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 08:45:07 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 15:22:11 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:41:30 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void		free_tab_int(t_tab_int *tab_int);
 void			sort(t_stacks *stacks);
 
 /* COSTS */
-void			get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element);
+void			get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element, int i_el);
 void			get_costs_a(t_dynamic_tab *cost_a, t_stack *stack, int i_el);
 void			free_costs(t_costs *costs);
 void			free_dynamic_tab(t_dynamic_tab *tab);
