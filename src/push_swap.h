@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 08:45:07 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 13:39:01 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/04 17:13:25 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct	s_stack
 	int		max;
 	int		top;
 }	t_stack;
-
 
 typedef struct	s_stacks
 {
@@ -117,6 +116,7 @@ int			stack_len(t_stack *stack);
 void		print_stack(t_stack *stack);
 void		stack_push(t_stack *stack, int nb);
 t_stack		*stack_copy(t_stack *stack);
+int			get_index_max_in_stack(t_stack *stack);
 
 /* PARSING */
 t_tab_int	*parse_data(int argc, char **argv);
@@ -128,8 +128,7 @@ void		free_tab_int(t_tab_int *tab_int);
 
 /* SORT */
 void			sort(t_stacks *stacks);
-
-/* COSTS */
+t_costs			*find_low_cost_element(t_stacks *stacks);
 void			get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element, int i_el);
 void			get_costs_a(t_dynamic_tab *cost_a, t_stack *stack, int i_el);
 void			free_costs(t_costs *costs);
@@ -139,5 +138,13 @@ t_costs			*init_costs(int element, int max_size);
 void			get_total_costs(t_costs *costs);
 t_bool			top_is_max(t_stack *stack);
 int				nearest_of_element(t_stack *stack, int element);
+void			up_nearest_position(t_dynamic_tab *cost_b, t_stack *stack, int element, int nearest);
+void			down_nearest_position(t_dynamic_tab *cost_b, t_stack *stack, int element, int nearest);
+void			three_sort(t_stack *stack);
+void			turk_sort(t_stacks *stacks);
+t_bool			stack_is_sorted(t_stack *stack);
 
+/* UTILS */
+void	print_dynamic_tab(t_dynamic_tab *tab);
+int		positive_subtraction(int n1, int n2);
 #endif

@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:30:18 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 10:37:31 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:45:51 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,37 @@ int	stack_len(t_stack *stack)
 		i--;
 	}
 	return (len);
+}
+
+
+t_bool	top_is_max(t_stack *stack)
+{
+	int i;
+	int val_top;
+
+	i = stack->top -1;
+	val_top = top(stack);
+	while (i >= 0)
+	{
+		if (stack->arr[i] > val_top)
+			return (FALSE);
+		i--;
+	}
+	return (TRUE);
+}
+
+int	get_index_max_in_stack(t_stack *stack)
+{
+	int max;
+	int next;
+
+	max = stack->top;
+	next = stack->top -1;
+	while (next > 0)
+	{
+		if (stack->arr[next] > stack->arr[max])
+			max = next;
+		next--;
+	}
+	return (max);
 }

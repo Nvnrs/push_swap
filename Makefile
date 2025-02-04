@@ -11,12 +11,17 @@ SRC= $(SRC_DIR)/main.c \
 	$(SRC_DIR)/sort/costs_a.c \
 	$(SRC_DIR)/sort/costs_b.c \
 	$(SRC_DIR)/sort/total_costs.c \
+	$(SRC_DIR)/sort/three_sort.c \
+	$(SRC_DIR)/sort/find_low_costs.c \
+	$(SRC_DIR)/sort/nearest.c \
+	$(SRC_DIR)/sort/turk_sort.c \
 	$(SRC_DIR)/sort/costs_init.c \
 	$(SRC_DIR)/operations/swap.c \
 	$(SRC_DIR)/operations/push.c \
 	$(SRC_DIR)/operations/rotate.c \
 	$(SRC_DIR)/operations/reverse_rotate.c \
 	$(SRC_DIR)/operations/operations_utils.c \
+	$(SRC_DIR)/utils.c \
 
 OBJ = $(SRC:.c=.o)
 # CFLAGS += -Wall -Wextra -Werror
