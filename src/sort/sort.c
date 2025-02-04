@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 11:34:31 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:21:27 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,6 @@ void	three_sort(t_stack *stack)
 		swap(stack, SA);
 		rotate(stack, RA);
 	}
-	print_stack(stack);
 }
 
 void	back_to_a(t_stacks *stacks)
@@ -210,6 +209,8 @@ void	back_to_a(t_stacks *stacks)
 		}
 		push(stacks->b, stacks->a, PA);
 	}
+	while(!stack_is_sorted(stacks->a))
+		reverse_rotate(stacks->a, RRA);
 }
 
 void	turk_sort(t_stacks *stacks)
@@ -258,16 +259,15 @@ void	turk_sort(t_stacks *stacks)
 void	sort(t_stacks *stacks)
 {
 	if (stack_is_sorted(stacks->a))
-	{
-		ft_printf("sdtacks is sorted");
-		return ;
-	}
-	if (stacks->a->max == 3)
+		ft_printf("stacks is sorted");
+	else if (stacks->a->max == 2)
+		rotate(stacks->a, RA);
+	else if (stacks->a->max == 3)
 	{
 		three_sort(stacks->a);
 		print_stack(stacks->a);
 		return;
-	} 
+	}
 	else
 		turk_sort(stacks);
 	// ft_printf("len stack A : %d\n", stack_len(stacks->a));

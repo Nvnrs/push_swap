@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 08:45:07 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 18:41:30 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/04 13:39:01 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,5 +138,6 @@ t_dynamic_tab	*init_dynamic_tab(int max);
 t_costs			*init_costs(int element, int max_size);
 void			get_total_costs(t_costs *costs);
 t_bool			top_is_max(t_stack *stack);
+int				nearest_of_element(t_stack *stack, int element);
 
 #endif
