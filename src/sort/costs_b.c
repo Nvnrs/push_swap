@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 11:40:49 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 08:49:41 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:58:47 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ int	count_move_start_bot(t_dynamic_tab *cost_b, t_stack *stack, int element, int
 void	get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element, int i_el)
 {
 	int nearest;
+	t_bool down;
 	int middle_stack;
 
 	nearest = nearest_of_element(stack, element);
@@ -231,6 +232,7 @@ void	get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element, int i_el)
 	// ft_printf("stack before sort : ");
 	// print_stack(stack);
 	// UP / DOWN NEAREST
+	down = FALSE;
 	if (i_el >= middle_stack)
 	{
 		// remonter nearest / up nearest
@@ -250,23 +252,51 @@ void	get_costs_b(t_dynamic_tab *cost_b, t_stack *stack, int element, int i_el)
 	
 		move_from_bot = count_move_start_bot(cost_b, stack, element, nearest);
 		// ft_printf("move bot %d", move_from_bot);
+		down = TRUE;
 		while (move_from_bot != 0)
 		{
 			cost_b->arr[cost_b->current_size++] = RRB;
 			move_from_bot--;
 		}
-		cost_b->arr[cost_b->current_size++] = RRB;
+
+		// with opti
+		if (element > nearest)
+			cost_b->arr[cost_b->current_size++] = RRB;
+		// // without
+		// cost_b->arr[cost_b->current_size++] = RRB;
 	}
 
-	//  SORT
+
+	// if (down && element > nearest)
+	// {
+
+	// }
+	// else if (down && element < nearest)
+	// {
+		
+	// }
+
+	// //  SORT OPTI
 	if (element > nearest)
 	{
 		cost_b->arr[cost_b->current_size++] = PB;
-		cost_b->arr[cost_b->current_size++] = RB;
+		// cost_b->arr[cost_b->current_size++] = RB;
 	}
 	else if (element < nearest)
 	{
-		cost_b->arr[cost_b->current_size++] = RB;
+		if (!down)
+			cost_b->arr[cost_b->current_size++] = RB;
 		cost_b->arr[cost_b->current_size++] = PB;
 	}
+	//  SORT without opti
+	// if (element > nearest)
+	// {
+	// 	cost_b->arr[cost_b->current_size++] = PB;
+	// 	cost_b->arr[cost_b->current_size++] = RB;
+	// }
+	// else if (element < nearest)
+	// {
+	// 	cost_b->arr[cost_b->current_size++] = RB;
+	// 	cost_b->arr[cost_b->current_size++] = PB;
+	// }
 }

@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 09:11:24 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:34:31 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,57 @@ void	put_max_to_top_b(t_stacks *stacks)
 		select_operation(stacks, operation);
 }
 
+void	three_sort(t_stack *stack)
+{
+	int top;
+	int mid;
+	int last;
+
+	top = stack->arr[stack->top];
+	mid = stack->arr[stack->top - 1];
+	last = stack->arr[0];
+	if (stack_is_sorted(stack))
+		return;
+	if (last > mid && last > top)
+		swap(stack, SA);
+	else if (top > mid && mid > last)
+	{
+		swap(stack, SA);
+		reverse_rotate(stack, RRA);
+	}
+	else if (top > mid && top > last)
+		rotate(stack, RA);
+	else if (last < mid && last < top)
+		reverse_rotate(stack, RRA);
+	else if (top < mid && last < mid)
+	{
+		swap(stack, SA);
+		rotate(stack, RA);
+	}
+	print_stack(stack);
+}
+
+void	back_to_a(t_stacks *stacks)
+{
+	int from_b;
+	int last_a;
+	int	i;
+
+	i = 0;
+	while (!stack_empty(stacks->b))
+	{
+		last_a = stacks->a->arr[0];
+		from_b = top(stacks->b);
+		while (last_a > from_b && i < 3)
+		{
+			reverse_rotate(stacks->a, RRA);
+			last_a = stacks->a->arr[0];
+			i++;
+		}
+		push(stacks->b, stacks->a, PA);
+	}
+}
+
 void	turk_sort(t_stacks *stacks)
 {
 	t_costs	*selected_el;
@@ -191,6 +242,8 @@ void	turk_sort(t_stacks *stacks)
 		free_costs(selected_el);
 	}
 	put_max_to_top_b(stacks);
+	three_sort(stacks->a);
+	back_to_a(stacks);
 
 	// reverse_rotate(stacks->b, RB);
 	// if (!stack_is_sorted(stacks->b))
@@ -199,6 +252,8 @@ void	turk_sort(t_stacks *stacks)
 	// print_stack(stacks->b);
 	// handle if 3
 }
+
+
 
 void	sort(t_stacks *stacks)
 {
@@ -209,7 +264,8 @@ void	sort(t_stacks *stacks)
 	}
 	if (stacks->a->max == 3)
 	{
-		ft_printf("use _algo for 3\n");
+		three_sort(stacks->a);
+		print_stack(stacks->a);
 		return;
 	} 
 	else
