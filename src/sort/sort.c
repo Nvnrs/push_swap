@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 15:21:27 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:42:27 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,15 +194,18 @@ void	back_to_a(t_stacks *stacks)
 {
 	int from_b;
 	int last_a;
+	int len_stack;
 	int	i;
 
 	i = 0;
+	len_stack = stack_len(stacks->a);
 	while (!stack_empty(stacks->b))
 	{
 		last_a = stacks->a->arr[0];
 		from_b = top(stacks->b);
-		while (last_a > from_b && i < 3)
+		while (last_a > from_b && i < len_stack)
 		{
+			ft_printf("last a < from b\n");
 			reverse_rotate(stacks->a, RRA);
 			last_a = stacks->a->arr[0];
 			i++;
@@ -244,13 +247,15 @@ void	turk_sort(t_stacks *stacks)
 	}
 	put_max_to_top_b(stacks);
 	three_sort(stacks->a);
+	print_stack(stacks->b);
+	print_stack(stacks->a);
 	back_to_a(stacks);
 
 	// reverse_rotate(stacks->b, RB);
 	// if (!stack_is_sorted(stacks->b))
-	// print_stack(stacks->a);
 	// ft_printf("\n");
-	// print_stack(stacks->b);
+	print_stack(stacks->a);
+
 	// handle if 3
 }
 
