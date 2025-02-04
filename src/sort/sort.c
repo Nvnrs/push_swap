@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 19:36:57 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:11:24 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ t_bool	stack_is_sorted(t_stack *stack)
 		i --;
 	}
 	return (TRUE);
+}
+
+void	print_instructions(t_dynamic_tab *cost_n)
+{
+	int j = 0;
+	while (j < cost_n->current_size)
+	{
+		ft_printf("%d ", cost_n->arr[j]);
+		if (j == cost_n->current_size -1)
+			ft_printf("\n");
+		j++;
+	}		
 }
 
 void	run_operations(t_stacks *stacks, t_costs *costs)
@@ -102,17 +114,6 @@ t_costs	*find_low_cost_element(t_stacks *stacks)
 
 // }
 
-void	print_instructions(t_dynamic_tab *cost_n)
-{
-	int j = 0;
-	while (j < cost_n->current_size)
-	{
-		ft_printf("%d ", cost_n->arr[j]);
-		if (j == cost_n->current_size)
-			ft_printf("\n");
-		j++;
-	}		
-}
 
 void	start_push(t_stacks *stacks)
 {
@@ -165,11 +166,18 @@ void	turk_sort(t_stacks *stacks)
 	t_costs	*selected_el;
 
 	int i = 1;
-	ft_printf("turk sort\n");
+	// ft_printf("turk sort\n");
 	start_push(stacks);
 	while (stack_len(stacks->a) > 3)
 	{
 		selected_el = find_low_cost_element(stacks);
+		// ft_printf("RUN for %d\n", selected_el->element);
+		// ft_printf("A :");
+		// print_instructions(selected_el->a);
+		// ft_printf("B :");
+		// print_instructions(selected_el->b);
+		// ft_printf("T :");
+		// print_instructions(selected_el->total);
 		run_operations(stacks, selected_el);
 		// run_operations_without_opti(stacks, selected_el->a);
 		// run_operations_without_opti(stacks, selected_el->b);

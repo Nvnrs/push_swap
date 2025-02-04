@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 14:38:12 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/03 19:36:55 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:09:48 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,25 +89,17 @@ void	get_total_costs(t_costs *costs)
 	// print_dynamic_tab(costs->a);
 	// ft_printf("B : %d\n", costs->b->current_size);
 	// print_dynamic_tab(costs->b);
-	while (a < costs->a->current_size && a < costs->b->current_size)
+	ope_a = costs->a->arr[a];
+	ope_b = costs->b->arr[a];
+	while (a < costs->a->current_size && a < costs->b->current_size
+		&& (ope_a / 10) == (ope_b / 10))
 	{
+		costs->total->arr[costs->total->current_size++] = ope_a -1;
+		a++;
 		ope_a = costs->a->arr[a];
 		ope_b = costs->b->arr[a];
-		if (ope_b == PB)
-		{
-			// ft_printf("break\n");
-			break;
-		}
-		else if ((ope_a / 10) == (ope_b / 10))
-		{
-			costs->total->arr[costs->total->current_size++] = ope_a -1;
-			b++;
-		}
-		else
-			costs->total->arr[costs->total->current_size++] = ope_a;
-		// ft_printf("run");
-		a++;
 	}
+	b = a;
 	add_remains(costs, costs->a, a);
 	add_remains(costs, costs->b, b);
 	// ft_printf("TOTAL : %d\n", costs->total->current_size);
