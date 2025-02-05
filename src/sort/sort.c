@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/05 09:19:09 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:36:54 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ t_bool	stack_is_sorted(t_stack *stack)
 void	sort(t_stacks *stacks)
 {
 	if (stack_is_sorted(stacks->a))
-		ft_printf("stacks is sorted");
+		return ;
 	else if (stacks->a->max == 2)
 		rotate(stacks->a, RA);
 	else if (stacks->a->max == 3)
 	{
 		three_sort(stacks->a);
-		print_stack(stacks->a);
 		return ;
 	}
 	else
