@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:30:18 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 16:45:51 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:13:14 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	print_stack(t_stack *stack)
 	}
 }
 
-t_stack *stack_copy(t_stack *stack)
+t_stack	*stack_copy(t_stack *stack)
 {
-	t_stack *copy;
-	int 	i;
+	t_stack	*copy;
+	int		i;
 
 	i = stack->top;
 	copy = init_stack(stack->max);
@@ -52,8 +52,8 @@ t_stack *stack_copy(t_stack *stack)
 
 int	stack_len(t_stack *stack)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = stack->top;
 	len = 0;
@@ -67,11 +67,10 @@ int	stack_len(t_stack *stack)
 	return (len);
 }
 
-
 t_bool	top_is_max(t_stack *stack)
 {
-	int i;
-	int val_top;
+	int	i;
+	int	val_top;
 
 	i = stack->top -1;
 	val_top = top(stack);
@@ -86,8 +85,8 @@ t_bool	top_is_max(t_stack *stack)
 
 int	get_index_max_in_stack(t_stack *stack)
 {
-	int max;
-	int next;
+	int	max;
+	int	next;
 
 	max = stack->top;
 	next = stack->top -1;

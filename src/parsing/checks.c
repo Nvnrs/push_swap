@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 08:57:09 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 10:43:10 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:08:48 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_bool	is_only_digit(char *str)
 {
-	int i;
-	int sign;
+	int	i;
+	int	sign;
 
 	i = 0;
 	if (str[i] == '-' && str[i + 1])
@@ -47,7 +47,7 @@ t_bool	only_val_in_tab(int nb_val, int *tab)
 
 t_bool	comp_val_with_other(int i_val, int nb_val, int *tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < nb_val)
@@ -86,7 +86,7 @@ t_bool	is_int(char *str)
 
 t_bool	check_list_of_arg(int max_str, char **tab_str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < max_str)
@@ -99,4 +99,3 @@ t_bool	check_list_of_arg(int max_str, char **tab_str)
 	}
 	return (TRUE);
 }
-

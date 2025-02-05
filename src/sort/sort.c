@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:15:19 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 16:42:11 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:19:09 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_bool	stack_is_sorted(t_stack *stack)
 {
-	int i;
-	int curr;
-	int next;
+	int	i;
+	int	curr;
+	int	next;
 
 	i = stack->top;
 	while (i > 0)
@@ -30,7 +30,6 @@ t_bool	stack_is_sorted(t_stack *stack)
 	return (TRUE);
 }
 
-
 void	sort(t_stacks *stacks)
 {
 	if (stack_is_sorted(stacks->a))
@@ -41,7 +40,7 @@ void	sort(t_stacks *stacks)
 	{
 		three_sort(stacks->a);
 		print_stack(stacks->a);
-		return;
+		return ;
 	}
 	else
 		turk_sort(stacks);

@@ -6,23 +6,16 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:23:42 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/01 17:45:01 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:06:36 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// 1. ra (rotate a)
-//   * Décale tous les éléments de la pile A d'une position vers le haut.
-// Le premier élément devient le dernier.
-// 2. rb (rotate b)
-//   * Décale tous les éléments de la pile B d'une position vers le haut.
-// Le premier élément devient le dernier.
-
 void	rotate(t_stack *stack, int operation)
 {
-	int i;
-	int temp;
+	int	i;
+	int	temp;
 
 	i = stack->top;
 	if (operation != RR)

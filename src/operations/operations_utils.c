@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:15:54 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 17:08:45 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:07:30 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	message_operation(int operation)
 {
-	char base;
+	char	base;
 
 	if (operation >= SS && operation <= SB)
 		base = 's';

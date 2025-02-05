@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:23:55 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 16:02:06 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:12:14 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ t_bool	stack_is_full(t_stack *stack)
 void	stack_push(t_stack *stack, int nb)
 {
 	if (stack_is_full(stack))
-	{
-		ft_printf("stack is full for %d\n", nb);
 		return ;
-	}
 	stack->top++;
 	stack->arr[stack->top] = nb;
 }
@@ -44,13 +41,10 @@ t_bool	stack_empty(t_stack *stack)
 
 int	pop(t_stack *stack)
 {
-	int popped;
+	int	popped;
 
 	if (stack_empty(stack))
-	{
-		ft_printf("stack is empty\n");
 		return (-1);
-	}
 	popped = stack->arr[stack->top];
 	stack->top--;
 	return (popped);

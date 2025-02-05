@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:32:28 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 16:42:38 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:20:26 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	run_operations(t_stacks *stacks, t_costs *costs)
 {
-	int i;
+	int	i;
 	int	operation;
 
 	i = 0;
@@ -28,9 +28,9 @@ void	run_operations(t_stacks *stacks, t_costs *costs)
 
 void	put_max_to_top_b(t_stacks *stacks)
 {
-	int operation;
-	int i_val_max;
-	int middle_stack;
+	int	operation;
+	int	i_val_max;
+	int	middle_stack;
 
 	i_val_max = get_index_max_in_stack(stacks->b);
 	middle_stack = stacks->b->top / 2;
@@ -44,9 +44,9 @@ void	put_max_to_top_b(t_stacks *stacks)
 
 void	back_to_a(t_stacks *stacks)
 {
-	int from_b;
-	int last_a;
-	int len_stack;
+	int	from_b;
+	int	last_a;
+	int	len_stack;
 	int	i;
 
 	i = 0;
@@ -63,7 +63,7 @@ void	back_to_a(t_stacks *stacks)
 		}
 		push(stacks->b, stacks->a, PA);
 	}
-	while(!stack_is_sorted(stacks->a))
+	while (!stack_is_sorted(stacks->a))
 		reverse_rotate(stacks->a, RRA);
 }
 
@@ -90,4 +90,3 @@ void	turk_sort(t_stacks *stacks)
 	three_sort(stacks->a);
 	back_to_a(stacks);
 }
-

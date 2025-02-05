@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 14:38:12 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/04 16:36:03 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:21:28 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	add_remains(t_costs *costs, t_dynamic_tab *cost_n, int i)
 {
-	int ope;
+	int	ope;
 
 	while (i < cost_n->current_size)
 	{
@@ -44,5 +44,5 @@ void	get_total_costs(t_costs *costs)
 	}
 	b = a;
 	add_remains(costs, costs->a, a);
-	add_remains(costs, costs->b, b);	
+	add_remains(costs, costs->b, b);
 }

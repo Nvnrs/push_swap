@@ -6,12 +6,11 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:09:58 by nveneros          #+#    #+#             */
-/*   Updated: 2025/01/29 09:48:45 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:09:17 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
 
 int	nb_of_split(char **split_str)
 {
@@ -37,7 +36,9 @@ void	free_tab_str(char **tab_str)
 	}
 	free(tab_str);
 }
-void	*error_parsing(t_bool tab_str_is_malloc, char **tab_str, t_tab_int *tab_int)
+
+void	*error_parsing(t_bool tab_str_is_malloc,
+	char **tab_str, t_tab_int *tab_int)
 {
 	ft_putstr_fd("Error\n", 2);
 	if (tab_str && tab_str_is_malloc)

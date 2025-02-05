@@ -6,7 +6,7 @@
 /*   By: nveneros <nveneros@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 11:24:49 by nveneros          #+#    #+#             */
-/*   Updated: 2025/02/02 12:01:34 by nveneros         ###   ########.fr       */
+/*   Updated: 2025/02/05 09:15:26 by nveneros         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free_dynamic_tab(t_dynamic_tab *tab)
 
 t_dynamic_tab	*init_dynamic_tab(int max)
 {
-	int i;
+	int				i;
 	t_dynamic_tab	*tab;
 
 	tab = malloc(sizeof(t_dynamic_tab));
@@ -47,7 +47,6 @@ t_dynamic_tab	*init_dynamic_tab(int max)
 	tab->current_size = 0;
 	return (tab);
 }
-
 
 t_costs	*init_costs(int element, int max_size)
 {
@@ -68,6 +67,6 @@ t_costs	*init_costs(int element, int max_size)
 		return (free_costs(costs), NULL);
 	costs->total = init_dynamic_tab(max_size * 2);
 	if (costs->total == NULL)
-		return (free_costs(costs), NULL);\
+		return (free_costs(costs), NULL);
 	return (costs);
 }
